@@ -2,9 +2,9 @@
 """
 Handling personal data
 """
-import logger
+import logging
 from typing import List
-
+import re
 
 PIIS_FIELD = ("name", "email", "phone", "ssn", "password")
 
