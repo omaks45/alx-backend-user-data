@@ -25,10 +25,12 @@ def stats() -> str:
     stats['users'] = User.count()
     return jsonify(stats)
 
-@app_views.route('unauthorized/', methods=['GET'], strict_slashes=False)
+# unauthorized access
+@app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def unauthorized() -> str:
+    """_summary_
+
+    Returns:
+        str: _description_
     """
-    Route: GET /api/v1/unauthorized
-    endpoint raises 410 error
-    """
-    abort(410, description='Unauthorized')
+    abort(401, description='Unauthorized')
