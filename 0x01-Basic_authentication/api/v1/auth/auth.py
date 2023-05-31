@@ -7,8 +7,6 @@ from typing import List, Typevar
 
 
 class Auth:
-    """_summary_
-    """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Args:
