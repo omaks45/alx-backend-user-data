@@ -43,6 +43,12 @@ class Auth:
         """
         if request is None:
             return None
+        
+        head = request.headers.get('Authorization')
+        if head is None:
+            return None
+
+        return head
 
     def current_user(self, request=None) -> TypeVar('User'):
         """_summary_
