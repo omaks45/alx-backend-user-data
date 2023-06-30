@@ -42,7 +42,7 @@ class BasicAuth(Auth):
         """
         if base64_authorization_header is None:
             return None
-        if not isinstance(base64_authorizationz_header, str):
+        if not isinstance(base64_authorization_header, str):
             return None
         try:
             value_to_decode = base64_authorization_header.encode('utf-8')
