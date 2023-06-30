@@ -56,7 +56,7 @@ class BasicAuth(Auth):
         """
         Args:
                             self(_type_): _description_
-                            self(_type_): _description_
+                            str(_type_): _description_
         """
         if decoded_base64_authorization_header is None:
             return (None, None)
@@ -64,5 +64,6 @@ class BasicAuth(Auth):
             return (None, None)
         if ':' not in decoded_base64_authorization_header:
             return (None, None)
+
         email, password = decoded_base64_authorized_header.split(':')
         return (email, password)
