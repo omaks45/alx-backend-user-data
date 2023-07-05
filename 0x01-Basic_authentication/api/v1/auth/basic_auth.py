@@ -53,10 +53,10 @@ class BasicAuth(Auth):
 
     def extract_user_credentials(
             self, decoded_base64_authorization_header: str) -> (str, str):
-        """
+        """_summary_
         Args:
-                            self(_type_): _description_
-                            str(_type_): _description_
+                                        self (_type_): _description_
+                                        str (_type_): _description_
         """
         if decoded_base64_authorization_header is None:
             return (None, None)
@@ -65,8 +65,9 @@ class BasicAuth(Auth):
         if ':' not in decoded_base64_authorization_header:
             return (None, None)
 
-        email, password = decoded_base64_authorized_header.split(':')
+        email, password = decoded_base64_authorization_header.split(':')
         return (email, password)
+
 
     def user_object_from_credentials(
             self, user_email: str, user_pwd: str) -> TypeVar('User'):
