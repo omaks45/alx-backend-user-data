@@ -10,12 +10,12 @@ class Auth:
     """_summary_
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """
+        """_summary_
         Args:
-            path (str): _description_
-            excluded_paths (List[str]): _description
+                path (str): _description_
+                excluded_paths (List[str]): _description_
         Returns:
-            bool: _description_
+                bool: _description_
         """
         if path is None:
             return True
@@ -34,6 +34,7 @@ class Auth:
             elif excluded_path[-1] == "*":
                 if path.startswith(excluded_path[:-1]):
                     return False
+
         return True
 
     def authorization_header(self, request=None) -> str:
