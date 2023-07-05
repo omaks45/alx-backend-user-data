@@ -24,20 +24,22 @@ else:
 
 
 @app.before_request
-def filteration():
-    """
-    request filteration
+def before_request():
+    """_summary_
+    Returns:
+        _type_: _description_
     """
     if auth is None:
         pass
-    funct_par = ['/api/v1/status/', '/api/v1/unauthorized',
-                 '/api/v1/forbidden/']
-    env_path = auth.require_auth(request.path, funct_par)
-    if env_path:
-        if auth.authorization_header(request) is None:
-            abort(401)
-        if auth.current_user(request) is None:
-            abort(403)
+    else:
+        excluded_list = ['/api/v1/status/',
+                         '/api/v1/unauthorized/', '/api/v1/forbidden/']
+
+        if auth.require_auth(request.path, excluded_list):
+            if auth.authorization_header(request) is None:
+                abort(401, description="Unauthorized")
+            if auth.current_user(request) is None:
+                abort(403, description='Forbidden')
 
 
 @app.errorhandler(404)
