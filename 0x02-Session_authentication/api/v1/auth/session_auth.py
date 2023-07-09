@@ -40,3 +40,16 @@ class SessionAuth(Auth):
         if not isinstance(session_id, str):
             return None
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """
+        session id for user identification
+        Args:
+            request(_type_): _description_
+        Returns:
+            user instance based on user id
+        """
+        session_cookie = self.session(request)
+        user_id = self.user_id_for_session_id(session_cookie)
+        user = User.get(user_id)
+        return user
