@@ -42,14 +42,14 @@ class SessionAuth(Auth):
         return self.user_id_by_session_id.get(session_id)
 
     def current_user(self, request=None):
-        """
-        session id for user identification
+        """_session id for user identification_
         Args:
-            request(_type_): _description_
+            request(_type_, optional): _description_
         Returns:
             user instance based on user id
         """
-        session_cookie = self.session(request)
+        session_cookie = self.session_cookie(request)
         user_id = self.user_id_for_session_id(session_cookie)
         user = User.get(user_id)
         return user
+        
