@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-""" session expire module api"""
-from os import getenv
-from api.v1.auth.session_auth import SessionAuth
+"""
+SessionExpAuth module for the API
+"""
 from datetime import datetime, timedelta
+from os import getenv
+
+from api.v1.auth.session_auth import SessionAuth
 
 
 class SessionExpAuth(SessionAuth):
-    """
-    session expiration authentication class
-    """
+    """A session auth class with expiration to manage the API authentication"""
+
     def __init__(self):
-        """
-        initializing session auth from session name
-        environment variable
-        """
-        dur = os.getenv(SESSION_DURATION)
-        self.session_duration = int(duration) if durationa
-        and duration.isnumeric() else 0
+        """Initialize the session auth from SESSION_DURATION env variable"""
+        duration = getenv('SESSION_DURATION')
+        self.session_duration = int(
+            duration) if duration and duration.isnumeric() else 0
 
     def create_session(self, user_id: str = None) -> str:
         """Creates a Session ID for a user_id"""
